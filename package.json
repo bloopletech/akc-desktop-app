@@ -1,8 +1,8 @@
 {
     "name": "akc-desktop-app",
-    "productName": "akc-desktop-app",
+    "productName": "ArrowKeyControl",
     "version": "1.0.0",
-    "description": "My Electron application description",
+    "description": "A fun game.",
     "main": "src/index.js",
     "scripts": {
         "start": "electron-forge start",
@@ -28,10 +28,13 @@
                 ]
             },
             "electronPackagerConfig": {
-                "packageManager": "yarn"
+                "packageManager": "yarn",
+                "icon": "./res/icon.ico"
             },
             "electronWinstallerConfig": {
-                "name": "akc_desktop_app"
+                "name": "ArrowKeyControl",
+                "setupIcon": "./res/icon.ico",
+                "iconUrl": "https://akc.link/icon.ico"
             },
             "electronInstallerDebian": {},
             "electronInstallerRedhat": {},
@@ -46,7 +49,8 @@
         }
     },
     "dependencies": {
-        "electron-compile": "^6.4.3"
+        "electron-compile": "^6.4.3",
+        "electron-squirrel-startup": "^1.0.0"
     },
     "devDependencies": {
         "babel-plugin-transform-async-to-generator": "^6.24.1",

@@ -1,27 +1,28 @@
 import { app, BrowserWindow, Menu } from 'electron';
 
+if(require('electron-squirrel-startup')) app.quit();
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 const createWindow = () => {
+  Menu.setApplicationMenu(null);
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
     nodeIntegration: false,
     backgroundColor: '#f1efc0',
     show: false,
-    width: 800,
-    height: 600,
+    width: 540,
+    height: 580,
+    useContentSize: true,
+    icon: './res/icon.ico'
   });
-
-  Menu.setApplicationMenu(null);
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
   });
-
-  // and load the main page of the app.
-  mainWindow.loadURL(`https://akc.link/`);
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
@@ -30,6 +31,9 @@ const createWindow = () => {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  // and load the main page of the app.
+  mainWindow.loadURL('https://akc.link/');
 };
 
 // This method will be called when Electron has finished
