@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -7,15 +7,21 @@ let mainWindow;
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
+    nodeIntegration: false,
+    backgroundColor: '#f1efc0',
+    show: false,
     width: 800,
     height: 600,
   });
 
-  // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
+  Menu.setApplicationMenu(null);
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
+  });
+
+  // and load the main page of the app.
+  mainWindow.loadURL(`https://akc.link/`);
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
